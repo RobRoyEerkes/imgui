@@ -11192,7 +11192,7 @@ void    ImGui::ErrorRecoveryTryToRecoverWindowState(const ImGuiErrorRecoveryStat
 {
     ImGuiContext& g = *GImGui;
 
-    while (g.CurrentTable != NULL && g.CurrentTable->InnerWindow == g.CurrentWindow)
+    while (g.CurrentTable != NULL && g.CurrentTable->InnerWindow == g.CurrentWindow) //-V1044
     {
         IM_ASSERT_USER_ERROR(0, "Missing EndTable()");
         EndTable();
@@ -11206,7 +11206,7 @@ void    ImGui::ErrorRecoveryTryToRecoverWindowState(const ImGuiErrorRecoveryStat
         IM_ASSERT_USER_ERROR(0, "Missing EndTabBar()");
         EndTabBar();
     }
-    while (g.CurrentMultiSelect != NULL && g.CurrentMultiSelect->Storage->Window == window)
+    while (g.CurrentMultiSelect != NULL && g.CurrentMultiSelect->Storage->Window == window) //-V1044
     {
         IM_ASSERT_USER_ERROR(0, "Missing EndMultiSelect()");
         EndMultiSelect();
@@ -11239,7 +11239,7 @@ void    ImGui::ErrorRecoveryTryToRecoverWindowState(const ImGuiErrorRecoveryStat
         }
     }
     IM_ASSERT(g.DisabledStackSize == state_in->SizeOfDisabledStack);
-    while (g.ColorStack.Size > state_in->SizeOfColorStack)
+    while (g.ColorStack.Size > state_in->SizeOfColorStack) //-V1044
     {
         IM_ASSERT_USER_ERROR(0, "Missing PopStyleColor()");
         PopStyleColor();
